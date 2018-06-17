@@ -1,0 +1,2 @@
+# tamagotchi-app
+Tamagotchi Game
