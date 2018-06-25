@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function startGame() {
+            let pet = {
+            isAlive: true,
+            isSleeping: false,
+            food: 10,
+            water: 1,
+            fun: 10,
+            fatigue: 0,
+            level: 1,
+            actions: {
+                feed: function () {
+
+                },
+                drink: function () {
+
+                },
+                goToSleep: function () {
+
+                },
+                wakeUp: function () {
+
+                },
+                play: function () {
+
+                },
+                endGame: function () {
+                    pet.isAlive = false;
+                    for(prop in petNeedsObject) {
+                        clearInterval(petNeedsObject[prop]);
+                        console.log(petNeedsObject[prop]);
+                    }
+                }
+            }
+        }
+
+        function checkStatus(petNeed) {
+            if (petNeed === 0) {
+                pet.actions.endGame();
+            }
+        }
+
+        let petNeedsObject = {
+            foodNeed:
+                setInterval(function () {
+                pet.food -= 1;
+                checkStatus(pet.food);
+                console.log("food: " + pet.food);
+
+            }, 10000),
+          
+            waterNeed: 
+          
+                setInterval(function () {
+                pet.water -= 1;
+                checkStatus(pet.water);
+                console.log("water: " + pet.water);
+            }, 5000),
+      
+            restNeed: 
+            setInterval(function () {
+
+
+                if(!pet.isSleeping){
+                    pet.fatigue += 1;
+                    if(pet.fatigue === 10) {
+                        pet.isSleeping = true;
+                    }
+                }
+                else {
+                    pet.fatigue -= 1;
+                    if(pet.fatigue === 0) {
+                        pet.isSleeping = false;
+                    }                    
+                }
+                console.log("rest: " + pet.fatigue);
+                console.log("sleeping status: " + pet.isSleeping);
+            }, 30000),
+        
+            funNeed: 
+            setInterval(function () {
+                pet.fun -= 1;
+                console.log("fun: " + pet.fun);
+            }, 20000),
+            
+            levelUp: 
+            setInterval(function () {
+                pet.level -= 1;
+                console.log("level: " + pet.level);
+            }, 60000)
+           
+
+        }
+            petNeedsObject.foodNeed;
+            petNeedsObject.waterNeed;
+            petNeedsObject.restNeed;
+            petNeedsObject.funNeed;
+            petNeedsObject.levelUp;
+        }
+
+        startGame();
+    </script>
+</body>
+
+</html>
