@@ -17,6 +17,7 @@ function createPet(name, food = 10, water = 10, fun = 10, fatigue = 0) {
             },
             goToSleep: function() {
                 pet.isSleeping = true;
+                pet.petNeedsObject.clearIntervals();
             },
             wakeUp: function() {
                 pet.isSleeping = false;
@@ -61,7 +62,7 @@ function createPet(name, food = 10, water = 10, fun = 10, fatigue = 0) {
                             console.log(pet.petNeedsObject.intervalStack.stack);
                             pet.isSleeping = true;
                             pet.petNeedsObject.clearIntervals();
-                            pet.petNeedsObject.intervalStack.stack.length = 0;
+                            
                         }
 
                     } else {
@@ -107,6 +108,7 @@ function createPet(name, food = 10, water = 10, fun = 10, fatigue = 0) {
                     for (let i = 0; i < pet.petNeedsObject.intervalStack.stack.length; i++) {
                         clearInterval(pet.petNeedsObject.intervalStack.stack[i]);
                     }
+                    pet.petNeedsObject.intervalStack.stack.length = 0;
             },
             checkStatus: function (petNeed) {
                 if (petNeed === 0) {
