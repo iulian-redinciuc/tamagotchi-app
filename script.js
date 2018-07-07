@@ -10,19 +10,19 @@ function createPet(name, food = 10, water = 10, fun = 10, fatigue = 0) {
         level: 1,
         actions: {
             feed: function() {
-
+                pet.food += 5;
             },
             drink: function() {
-
+                pet.water += 5;
             },
             goToSleep: function() {
-
+                pet.isSleeping = true;
             },
             wakeUp: function() {
-
+                pet.isSleeping = false;
             },
             play: function() {
-
+                pet.fun += 5;
             },
             endGame: function() {
                 console.log("Your pet is dead :(")
