@@ -136,6 +136,14 @@ function startGame(petName) {
     setIntervals();
 }
 
-let Petrica = createPet("Petrica", 3);
 
-startGame(Petrica);
+
+
+let petSubmission = document.getElementById("submitPet");
+
+petSubmission.addEventListener("click", function getFormInfo(event) {
+    event.preventDefault();
+    NewPetName  = document.getElementById("PetName").value;
+    let CreatedPet = createPet(NewPetName);
+    startGame(CreatedPet);
+});
