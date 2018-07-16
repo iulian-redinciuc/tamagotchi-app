@@ -119,8 +119,8 @@ function createPet(name, food = 10, water = 10, fun = 10, fatigue = 0) {
 
         }
     }
-
-    return pet;
+    
+    return pet; 
 }
 
 function startGame(petName) {
