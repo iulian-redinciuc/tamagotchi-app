@@ -1,29 +1,32 @@
-.btn {
-    padding: 10px 5px;
-    background-color: transparent;
-    color: blue;
-    font-size: 20px;
+#pets {
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+h1 {
+    text-align: center;
+}
+.status {
     display: inline-block;
+    min-width: 55px;
 }
 
-.btn--succes {
-    background-color: green;
+.pet {
+    min-width: 217px;
 }
-.btn--danger {
-    background-color: red;
-}
-.btn--warning {
-    background-color:orange;
-}
-.btn--loading  {
-    pointer-events: none;
-}
-.btn__loading-text {
+
+.pet-creation form {
+    width: 161px;
     display: block;
+    margin: 0 auto;
 }
-.btn__not-loading-text {
-    display: none;
-}
-.btn--loading .btn__not-loading-text {
-    display: none;
+
+#sbn-form {
+    display: block;
+    margin: 9px auto;
 }

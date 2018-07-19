@@ -1,12 +1,26 @@
+
 (function () {
     for(var i =0; i < localStorage.length; i++){
-        let localStorageEl = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        new Pet(localStorageEl.name);
+        let pet = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        new Pet(pet.name);
+        let pets = document.getElementById("pets");
+        let child = document.createElement("div");
+        child.className = "pet";
+        child.innerHTML = 
+        `<h1>${pet.name}</h1>
+        <div class="status">Food </div><progress id="${pet.name}-food" value="${pet.food}" max="100"></progress><br>
+        <div class="status">Water </div><progress id="${pet.name}-water" value="${pet.water}" max="100"></progress><br>
+        <div class="status">Fun </div><progress id="${pet.name}-fun" value="${pet.fun}" max="100"></progress><br>
+        <div class="status">Fatigue </div><progress id="${pet.name}-fatigue" value="${pet.fatigue}" max="100"></progress><br>
+        <div class="status">Level </div><progress id="${pet.name}-level" value="${pet.level}" max="100"></progress>`
+        pets.appendChild(child);
+
+
      }
 })();
 
 
-function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
+function Pet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
 
     let pet = {
         name: name,
@@ -36,6 +50,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
                     pet.food -= 1;
 
                     pet.petNeedsObject.checkStatus(pet.food);
+                    document.getElementById(pet.name+"-food").value = pet.food;
                 }, 10000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
@@ -46,6 +61,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
                     pet.water -= 1;
 
                     pet.petNeedsObject.checkStatus(pet.water);
+                    document.getElementById(pet.name+"-water").value = pet.water;
                 }, 5000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
 
@@ -57,7 +73,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
                     if (!pet.isSleeping) {
 
                         pet.fatigue += 1;
-                        if (pet.fatigue === 10) {
+                        if (pet.fatigue === 100) {
                             console.log(pet.petNeedsObject.intervalStack.stack);
                             pet.isSleeping = true;
                             pet.petNeedsObject.clearIntervals();
@@ -80,6 +96,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
 
                     console.log(pet.name + "\'s fatigue: " + pet.fatigue);
                     console.log(pet.name + "\'s sleeping status: " + pet.isSleeping);
+                    document.getElementById(pet.name+"-fatigue").value = pet.fatigue;
                 }, 2000);
                 pet.petNeedsObject.intervalStack.sleepIntervalId = interval;
             },
@@ -89,6 +106,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
                     pet.fun -= 1;
 
                     console.log(pet.name + "\'s fun: " + pet.fun);
+                    document.getElementById(pet.name+"-fun").value = pet.fun;
                 }, 20000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
@@ -98,6 +116,7 @@ function Pet(name, food = 10, water = 4, fun = 10, fatigue = 0) {
                     pet.level += 1;
 
                     console.log(pet.name + "\'s level: " + pet.level);
+                    document.getElementById(pet.name+"-level").value = pet.level;
                 }, 60000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
@@ -170,7 +189,17 @@ submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     let petName = document.getElementById("pet-name").value;
     new Pet(petName);
-
+    let pets = document.getElementById("pets");
+    let child = document.createElement("div");
+    child.className = "pet";
+    child.innerHTML = 
+    `<h1>${petName}</h1>
+    <div class="status">Food </div><progress id="${petName}-food" value="100" max="100"></progress><br>
+    <div class="status">Water </div><progress id="${petName}-water" value="100" max="100"></progress><br>
+    <div class="status">Fun </div><progress id="${petName}-fun" value="100" max="100"></progress><br>
+    <div class="status">Fatigue </div><progress id="${petName}-fatigue" value="0" max="100"></progress><br>
+    <div class="status">Level </div><progress id="${petName}-level" value="1" max="100"></progress>`
+    pets.appendChild(child);
 })
 
 
