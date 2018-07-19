@@ -1,5 +1,5 @@
-#pets {
-
+#pets,
+.call-to-actions {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -17,7 +17,7 @@ h1 {
 }
 
 .pet {
-    min-width: 217px;
+    max-width:250px;
 }
 
 .pet-creation form {
@@ -26,7 +26,7 @@ h1 {
     margin: 0 auto;
 }
 
-#sbn-form {
+#sbm-form {
     display: block;
     margin: 9px auto;
 }
