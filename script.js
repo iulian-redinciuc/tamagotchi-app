@@ -177,8 +177,39 @@ function Pet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
     pet.petNeedsObject.levelUp();
     pet.petNeedsObject.restNeed();
     actions.savePet();
-
-
+    let pets = document.getElementById("pets");
+    let child = document.createElement("div");
+    child.className = "pet";
+    child.innerHTML = 
+    `<h1>${pet.name}</h1>
+    <div class="status">Food </div><progress id="${pet.name}-food" value="100" max="100"></progress><br>
+    <div class="status">Water </div><progress id="${pet.name}-water" value="100" max="100"></progress><br>
+    <div class="status">Fun </div><progress id="${pet.name}-fun" value="100" max="100"></progress><br>
+    <div class="status">Fatigue </div><progress id="${pet.name}-fatigue" value="0" max="100"></progress><br>
+    <div class="status">Level </div><progress id="${pet.name}-level" value="1" max="100"></progress>
+    <div class="call-to-actions">
+        <button id="${pet.name}-feed">Feed</button>
+        <button id="${pet.name}-give-water">Give Water</button>
+        <button id="${pet.name}-play">Play</button>
+        <button id="${pet.name}-sleep">Go to sleep</button>
+        <button id="${pet.name}-wake">Wake up!</button>
+    </div>`
+    pets.appendChild(child);
+    document.getElementById(pet.name + "-feed").addEventListener("click", function(){
+        actions.feed();
+    });
+    document.getElementById(pet.name + "-give-water").addEventListener("click", function(){
+        actions.drink();
+    });
+    document.getElementById(pet.name + "-play").addEventListener("click", function(){
+        actions.play();
+    });
+    document.getElementById(pet.name + "-sleep").addEventListener("click", function(){
+        actions.goToSleep();
+    });
+    document.getElementById(pet.name + "-wake").addEventListener("click", function(){
+        actions.wakeUp();
+    });
     return actions;
 }
 
@@ -191,25 +222,6 @@ submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     let petName = document.getElementById("pet-name").value;
     new Pet(petName);
-    let pets = document.getElementById("pets");
-    let child = document.createElement("div");
-    child.className = "pet";
-    child.innerHTML = 
-    `<h1>${petName}</h1>
-    <div class="status">Food </div><progress id="${petName}-food" value="100" max="100"></progress><br>
-    <div class="status">Water </div><progress id="${petName}-water" value="100" max="100"></progress><br>
-    <div class="status">Fun </div><progress id="${petName}-fun" value="100" max="100"></progress><br>
-    <div class="status">Fatigue </div><progress id="${petName}-fatigue" value="0" max="100"></progress><br>
-    <div class="status">Level </div><progress id="${petName}-level" value="1" max="100"></progress>
-    <div class="call-to-actions">
-        <button id="${petName}-feed">Feed</button>
-        <button id="${petName}-give-water">Give Water</button>
-        <button id="${petName}-play">Play</button>
-        <button id="${petName}-sleep">Go to sleep</button>
-        <button id="${petName}-wake">Wake up!</button>
-    </div>`
-    pets.appendChild(child);
-
 })
 
 
