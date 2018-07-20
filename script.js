@@ -195,19 +195,24 @@ function Pet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
         <button id="${pet.name}-wake">Wake up!</button>
     </div>`
     pets.appendChild(child);
-    document.getElementById(pet.name + "-feed").addEventListener("click", function(){
+    let feedBtn = document.getElementById(pet.name + "-feed");
+    feedBtn.addEventListener("click", function(){
         actions.feed();
     });
-    document.getElementById(pet.name + "-give-water").addEventListener("click", function(){
+    let waterBtn = document.getElementById(pet.name + "-give-water");
+    waterBtn.addEventListener("click", function(){
         actions.drink();
     });
-    document.getElementById(pet.name + "-play").addEventListener("click", function(){
+    let playBtn = document.getElementById(pet.name + "-play");
+    playBtn.addEventListener("click", function(){
         actions.play();
     });
-    document.getElementById(pet.name + "-sleep").addEventListener("click", function(){
+    let sleepBtn = document.getElementById(pet.name + "-sleep");
+    sleepBtn.addEventListener("click", function(){
         actions.goToSleep();
     });
-    document.getElementById(pet.name + "-wake").addEventListener("click", function(){
+    let wakeBtn = document.getElementById(pet.name + "-wake");
+    wakeBtn.addEventListener("click", function(){
         actions.wakeUp();
     });
     return actions;
