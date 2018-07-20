@@ -1,1 +1,32 @@
+#pets,
+.call-to-actions {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+h1 {
+    text-align: center;
+}
+.status {
+    display: inline-block;
+    min-width: 55px;
+}
 
+.pet {
+    max-width:250px;
+}
+
+.pet-creation form {
+    width: 161px;
+    display: block;
+    margin: 0 auto;
+}
+
+#sbm-form {
+    display: block;
+    margin: 9px auto;
+}
