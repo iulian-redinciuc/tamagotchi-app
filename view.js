@@ -29,7 +29,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
 
                     pet.petNeedsObject.checkStatus(pet.food);
                     document.getElementById(pet.name+"-food").value = pet.food;
-                }, 10000)
+                }, 5000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
 
@@ -40,7 +40,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
 
                     pet.petNeedsObject.checkStatus(pet.water);
                     document.getElementById(pet.name+"-water").value = pet.water;
-                }, 5000)
+                }, 1000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
 
             },
@@ -128,6 +128,10 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
             },
             wakeUp: function () {
                 pet.isSleeping = false;
+                pet.petNeedsObject.foodNeed();
+                pet.petNeedsObject.waterNeed();
+                pet.petNeedsObject.funNeed();
+                pet.petNeedsObject.levelUp();
             },
             play: function () {
                 pet.fun += 5;
@@ -196,14 +200,17 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
                 let feedBtn = document.getElementById(pet + "-feed");
                 feedBtn.addEventListener("click", function(){
                     petActions.feed();
+                    document.getElementById(pet +"-food").value += 5;
                 });
                 let waterBtn = document.getElementById(pet + "-give-water");
                 waterBtn.addEventListener("click", function(){
                     petActions.drink();
+                    document.getElementById(pet + "-water").value += 5;
                 });
                 let playBtn = document.getElementById(pet + "-play");
                 playBtn.addEventListener("click", function(){
                     petActions.play();
+                    document.getElementById(pet + "-fun").value += 5;
                 });
                 let sleepBtn = document.getElementById(pet + "-sleep");
                 sleepBtn.addEventListener("click", function(){
