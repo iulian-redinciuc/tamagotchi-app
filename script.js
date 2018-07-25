@@ -1,26 +1,3 @@
-
-// (function () {
-//     for(var i =0; i < localStorage.length; i++){
-//         let pet = JSON.parse(localStorage.getItem(localStorage.key(i)));
-//         let petName = pet.name;
-//         new Pet(petName);
-//         let pets = document.getElementById("pets");
-//         let child = document.createElement("div");
-//         child.className = "pet";
-//         child.innerHTML = 
-//         `<h1>${petName}</h1>
-//         <div class="status">Food </div><progress id="${petName}-food" value="${pet.food}" max="100"></progress><br>
-//         <div class="status">Water </div><progress id="${petName}-water" value="${pet.water}" max="100"></progress><br>
-//         <div class="status">Fun </div><progress id="${petName}-fun" value="${pet.fun}" max="100"></progress><br>
-//         <div class="status">Fatigue </div><progress id="${petName}-fatigue" value="${pet.fatigue}" max="100"></progress><br>
-//         <div class="status">Level </div><progress id="${petName}-level" value="${pet.level}" max="100"></progress><br>
-//         <button id="${petName}-feed">Feed</button><button id="${petName}-give-water">Give Water</button><button id="${petName}-play">Play</button><button id="${petName}-sleep">Go to sleep</button><button id="${petName}-wake">Wake up!</button>
-//         `
-//         pets.appendChild(child);
-//      }
-// })();
-
-
 function Pet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
 
     let pet = {
