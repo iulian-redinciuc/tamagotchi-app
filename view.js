@@ -157,7 +157,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
         pet.petNeedsObject.funNeed();
         pet.petNeedsObject.levelUp();
         pet.petNeedsObject.restNeed();
-        petActions.savePet();
+        // petActions.savePet();
         let pets = document.getElementById("pets");
         
         pets.notify = function(petsList) {
@@ -177,7 +177,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
                 let funStatus = document.createElement("div");
                 funStatus.innerHTML = `<div class="status">Fun </div><progress id="${pet}-fun" value="100" max="100"></progress><br>`;
                 let fatigueStatus = document.createElement("div");
-                fatigueStatus.innerHTML = ` <div class="status">Fatigue </div><progress id="${pet}-fatigue" value="0" max="100"></progress><br>`;
+                fatigueStatus.innerHTML = `<div class="status">Fatigue </div><progress id="${pet}-fatigue" value="0" max="100"></progress><br>`;
                 let levelStatus = document.createElement("div");
                 levelStatus.innerHTML = `<div class="status">Level </div><progress id="${pet}-level" value="1" max="100"></progress>`;
                 let actions = document.createElement("div")
@@ -188,6 +188,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
                 <button id="${pet}-play">Play</button>
                 <button id="${pet}-sleep">Go to sleep</button>
                 <button id="${pet}-wake">Wake up!</button>`
+
                 child.appendChild(petName);
                 child.appendChild(foodStatus);
                 child.appendChild(waterStatus);
