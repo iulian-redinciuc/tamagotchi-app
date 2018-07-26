@@ -169,7 +169,9 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
 
                 let petName = document.createElement("h1");
                 petName.innerText =  pet;
-
+                let petImg = document.createElement("div");
+                petImg.classList.add("pet-img");
+                petImg.style.backgroundImage = "url(./assets/doge.jpg)";
                 let foodStatus = document.createElement("div");
                 foodStatus.innerHTML = `<div class="status">Food </div><progress id="${pet}-food" value="100" max="100"></progress><br>`;
                 let waterStatus = document.createElement("div");
@@ -190,6 +192,7 @@ function createPet(myModel, name, food = 100, water = 100, fun = 100, fatigue = 
                 <button id="${pet}-wake">Wake up!</button>`
 
                 child.appendChild(petName);
+                child.appendChild(petImg);
                 child.appendChild(foodStatus);
                 child.appendChild(waterStatus);
                 child.appendChild(funStatus);

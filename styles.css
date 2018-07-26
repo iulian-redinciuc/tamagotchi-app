@@ -1,3 +1,13 @@
+* {
+    font-family: 'Varela Round', sans-serif;
+}
+body {
+    background-image: url("./assets/bg.jpg");
+    min-height: calc(100vh - 16px);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 #pets,
 .call-to-actions {
     display: -webkit-box;
@@ -10,6 +20,8 @@
 }
 h1 {
     text-align: center;
+    font-size: 19px;
+    text-transform: uppercase;
 }
 .status {
     display: inline-block;
@@ -17,7 +29,19 @@ h1 {
 }
 
 .pet {
-    max-width:250px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    max-width: 275px;
+    background: rgb(254,252,234); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(254,252,234,1) 0%, rgba(241,218,54,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 ); /* IE6-9 */
+}
+.pet > div {
+    text-align: center;
 }
 
 .pet-creation form {
@@ -29,4 +53,66 @@ h1 {
 #sbm-form {
     display: block;
     margin: 9px auto;
+}
+.call-to-actions button {
+    margin: 5px 0px;
+    width: 100%;
+}
+button {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin: 5px;
+    outline: none;
+    font-weight: bold;
+}
+button:hover {
+    background: #8bc34a;
+}
+progress {
+    display: inline-block;
+    width: 185px;
+    padding: 1px;
+    margin-left: 5px;
+    border: 0 none;
+    background: rgb(234, 234, 234);    
+    border-radius: 14px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px (255,255,255,0.2);
+}
+  progress::-moz-progress-bar {
+    border-radius: 12px;
+    background: rgb(234, 234, 234);    
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px rgba(0,0,0,0.3);
+    
+  }
+  /* webkit */
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    progress {
+      height: 13px;
+    }
+  }
+  progress::-webkit-progress-bar {
+      background: transparent;
+  }  
+  progress::-webkit-progress-value {  
+    border-radius: 12px;
+    background: rgb(93, 149, 212);
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px rgba(0,0,0,0.3); 
+  }
+
+.pet-img {
+
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+/* change avatar */
+
+.call-to-actions button:first-child {
+    background-image: url()
 }
