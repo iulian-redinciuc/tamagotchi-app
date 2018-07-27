@@ -16,28 +16,28 @@ function createPETDIV(myModel, petName) {
                 petImg.style.backgroundImage = "url(./assets/doge.jpg)";
                 
                 let foodStatus = document.createElement("div");
-                foodStatus.innerHTML = `<div class="status">Food </div><progress id="${pet}-food" value="100" max="100"></progress><br>`;
+                foodStatus.innerHTML = `<div class="status">Food </div><progress id="${petName}-food" value="100" max="100"></progress><br>`;
                
                 let waterStatus = document.createElement("div");
-                waterStatus.innerHTML = `<div class="status">Water </div><progress id="${pet}-water" value="100" max="100"></progress><br>`
+                waterStatus.innerHTML = `<div class="status">Water </div><progress id="${petName}-water" value="100" max="100"></progress><br>`
                
                 let funStatus = document.createElement("div");
-                funStatus.innerHTML = `<div class="status">Fun </div><progress id="${pet}-fun" value="100" max="100"></progress><br>`;
+                funStatus.innerHTML = `<div class="status">Fun </div><progress id="${petName}-fun" value="100" max="100"></progress><br>`;
                
                 let fatigueStatus = document.createElement("div");
-                fatigueStatus.innerHTML = `<div class="status">Fatigue </div><progress id="${pet}-fatigue" value="0" max="100"></progress><br>`;
+                fatigueStatus.innerHTML = `<div class="status">Fatigue </div><progress id="${petName}-fatigue" value="0" max="100"></progress><br>`;
                 
                 let levelStatus = document.createElement("div");
-                levelStatus.innerHTML = `<div class="status">Level </div><progress id="${pet}-level" value="1" max="100"></progress>`;
+                levelStatus.innerHTML = `<div class="status">Level </div><progress id="${petName}-level" value="1" max="100"></progress>`;
                 
                 let actions = document.createElement("div");
                 actions.classList.add("call-to-actions");
                 actions.innerHTML = `
-                <button id="${pet}-feed">Feed</button>
-                <button id="${pet}-give-water">Give Water</button>
-                <button id="${pet}-play">Play</button>
-                <button id="${pet}-sleep">Go to sleep</button>
-                <button id="${pet}-wake">Wake up!</button>`
+                <button id="${petName}-feed">Feed</button>
+                <button id="${petName}-give-water">Give Water</button>
+                <button id="${petName}-play">Play</button>
+                <button id="${petName}-sleep">Go to sleep</button>
+                <button id="${petName}-wake">Wake up!</button>`
 
                 child.appendChild(petName);
                 child.appendChild(petImg);
