@@ -113,8 +113,7 @@ function createPet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
     
     petActions = {
         getAttr: function(attr){
-            
-            return pet.attr;
+            return pet[attr];
         },
         feed: function () {
             pet.food += 5;

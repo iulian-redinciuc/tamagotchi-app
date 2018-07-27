@@ -1,18 +1,15 @@
-function createPETDIV(myModel, pet) {
-
+function createPETDIV(myModel, petName) {
 
         let pets = document.getElementById("pets");
         
         pets.notify = function(petsList) {
-          
-           
             pets.innerHTML = null;
             petsList.forEach(function(pet) {
                 let child = document.createElement("div");
                 child.className = "pet";
 
                 let petName = document.createElement("h1");
-                petName.innerText =  pet.getAttr('name');
+                petName.innerText =  petName;
 
                 let petImg = document.createElement("div");
                 petImg.classList.add("pet-img");
@@ -80,7 +77,5 @@ function createPETDIV(myModel, pet) {
             
         }
         myModel.subscribe(pets);
-
-
         return pets;
     }
