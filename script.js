@@ -1,13 +1,3 @@
-
-(function () {
-    for(var i =0; i < localStorage.length; i++){
-        let pet = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        let petName = pet.name;
-        new Pet(petName);
-     }
-})();
-
-
 function Pet(name, food = 100, water = 100, fun = 100, fatigue = 0) {
 
     let pet = {
