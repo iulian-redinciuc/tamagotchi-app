@@ -1,8 +1,4 @@
 function createPETDIV(myModel, petName) {
-<<<<<<< HEAD
-
-=======
->>>>>>> d0b8ad7b868946175485345fc1f54e2842b1bd74
 
         let pets = document.getElementById("pets");
         
@@ -12,13 +8,8 @@ function createPETDIV(myModel, petName) {
                 let child = document.createElement("div");
                 child.className = "pet";
 
-<<<<<<< HEAD
-                let heading = document.createElement("h1");
-                heading.innerText =  petName;
-=======
                 let petName = document.createElement("h1");
                 petName.innerText =  petName;
->>>>>>> d0b8ad7b868946175485345fc1f54e2842b1bd74
 
                 let petImg = document.createElement("div");
                 petImg.classList.add("pet-img");
