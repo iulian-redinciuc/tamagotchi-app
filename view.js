@@ -62,7 +62,7 @@ function createPETDIV(myModel, petName) {
                 let playBtn = document.getElementById(pet.getAttr('name') + "-play");
                 playBtn.addEventListener("click", function(){
                     petActions.play();
-                    document.getElementById(pet + "-fun").value += 5;
+                    document.getElementById(pet.getAttr('name') + "-fun").value += 5;
                 });
                 let sleepBtn = document.getElementById(pet.getAttr('name') + "-sleep");
                 sleepBtn.addEventListener("click", function(){
