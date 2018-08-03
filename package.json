@@ -1,0 +1,32 @@
+{
+  "name": "tamagotchi-app",
+  "version": "1.0.0",
+  "description": "Tamagotchi Game",
+  "scripts": {
+    "dev": "babel src --out-dir dist --watch",
+    "prod": "babel src --out-dir dist",
+    "uglify": "uglify-js src -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iulian-redinciuc/tamagotchi-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iulian-redinciuc/tamagotchi-app/issues"
+  },
+  "homepage": "https://github.com/iulian-redinciuc/tamagotchi-app#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.2.0",
+    "eslint-config": "^0.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "^1.14.0",
+    "uglify-js": "^3.4.6"
+  }
+}
