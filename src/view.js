@@ -1,4 +1,4 @@
-function createPETDIV(myModel, petName) {
+function createPETDIV(myModel) {
   let pets = document.getElementById('pets');
 
   pets.notify = function notify(petsList) {
@@ -60,31 +60,39 @@ function createPETDIV(myModel, petName) {
       child.appendChild(actions);
       pets.appendChild(child);
 
-      let feedBtn = document.getElementById(pet.getAttr('name') + '-feed');
+      let feedBtn = document.getElementById(`${pet.getAttr('name')}-feed`);
+
       feedBtn.addEventListener('click', () => {
         pet.feed();
-        document.getElementById(pet.getAttr('name') + '-food').value += 5;
+        document.getElementById(`${pet.getAttr('name')}-food`).value += 5;
       });
-      let waterBtn = document.getElementById(
-        pet.getAttr('name') + '-give-water'
-      );
+
+      let waterBtn = document.getElementById(`${pet.getAttr('name')}-give-water`);
+
       waterBtn.addEventListener('click', () => {
         pet.drink();
-        document.getElementById(pet.getAttr('name') + '-water').value += 5;
+        document.getElementById(`${pet.getAttr('name')}-water`).value += 5;
       });
-      let playBtn = document.getElementById(pet.getAttr('name') + '-play');
+
+      let playBtn = document.getElementById(`${pet.getAttr('name')}-play`);
+
       playBtn.addEventListener('click', () => {
         pet.play();
-        document.getElementById(pet.getAttr('name') + '-fun').value += 5;
+        document.getElementById(`${pet.getAttr('name')}-fun`).value += 5;
       });
-      let sleepBtn = document.getElementById(pet.getAttr('name') + '-sleep');
+
+      let sleepBtn = document.getElementById(`${pet.getAttr('name')}-sleep`);
+
       sleepBtn.addEventListener('click', () => {
         pet.goToSleep();
       });
-      let wakeBtn = document.getElementById(pet.getAttr('name') + '-wake');
+
+      let wakeBtn = document.getElementById(`${pet.getAttr('name')}-wake`);
+
       wakeBtn.addEventListener('click', () => {
         pet.wakeUp();
       });
+
     });
   };
   myModel.subscribe(pets);

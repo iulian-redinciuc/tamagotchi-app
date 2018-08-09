@@ -1,85 +1,45 @@
-let PetModel = (function () {
-    let myPets = [];
-    let myObservers = [];
 
-    function notifySubscribers() {
-        myObservers.forEach(function (observer) {
-            if (typeof observer.notify === "function") {
-                // console.log(myPets);
-                observer.notify(myPets);
-            }
-        })
-    }
-
-    return {
-        addPet: function (petName) { 
-            let pet = createPet(petName, notifySubscribers);
-            myPets.push(pet);
-           
-            pet.name = petName;
-            pet.isAlive = pet.getAttr('isAlive');
-            pet.isSleeping = pet.getAttr('isSleeping');
-            pet.food = pet.getAttr('food');
-            pet.water = pet.getAttr('water');
-            pet.fun = pet.getAttr('fun');
-            pet.fatigue = pet.getAttr('fatigue');
-            pet.level = pet.getAttr('level');
-            localStorage.setItem(`${petName}`, JSON.stringify(pet));
-            let pet2 = JSON.parse(localStorage.getItem(`${petName}`));
-            // console.log(localStorage);
-            
-            notifySubscribers();
-        },
-        // removePet: function(pet){
-
-        // },
-        subscribe(observer) {
-            myObservers.push(observer);
-            notifySubscribers();
-        }
-    }
-})();
 
 function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue = 0) {
     let pet = {
-        name: name,
+        name,
         isAlive: true,
         isSleeping: false,
-        food: food,
-        water: water,
-        fun: fun,
-        fatigue: fatigue,
+        food,
+        water,
+        fun,
+        fatigue,
         level: 1,
-        endGame: function () {
+        endGame:  () => {
             pet.isAlive = false;
             pet.petNeedsObject.clearIntervals();
             clearInterval(pet.petNeedsObject.intervalStack.sleepIntervalId);
-            console.log(pet.name + " is dead :(")
+            // console.log(`${pet.name}  is dead :(`)
         },
         petNeedsObject: {
-            checkStatus: function (petNeed) {
+            checkStatus:  (petNeed) => {
                 if (petNeed === 0) {
                     pet.endGame();
                 }
             },
-            foodNeed: function () {
-                let interval = setInterval(function () {
+            foodNeed:  () => {
+                let interval = setInterval( () => {
                     pet.food -= 1;
                     pet.petNeedsObject.checkStatus(pet.food);
                     onUpdateCb();
                 }, 5000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
-            waterNeed: function () {
-                let interval = setInterval(function () {
+            waterNeed:  () => {
+                let interval = setInterval( () => {
                     pet.water -= 1;
                     pet.petNeedsObject.checkStatus(pet.water);
                     onUpdateCb();
                 }, 1000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
-            restNeed: function () {
-                let interval = setInterval(function () {
+            restNeed:  () => {
+                let interval = setInterval( () =>{
                     if (!pet.isSleeping) {
                         pet.fatigue += 1;
                         if (pet.fatigue === 100) {
@@ -102,16 +62,16 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
                 pet.petNeedsObject.intervalStack.sleepIntervalId = interval;
             },
 
-            funNeed: function () {
-                let interval = setInterval(function () {
+            funNeed: () => {
+                let interval = setInterval(() => {
                     pet.fun -= 1;
                     onUpdateCb();
                 }, 20000)
                 pet.petNeedsObject.intervalStack.stack.push(interval);
             },
 
-            levelUp: function () {
-                let interval = setInterval(function () {
+            levelUp: () => {
+                let interval = setInterval(() => {
                     pet.level += 1;
                     onUpdateCb();
                 }, 60000)
@@ -121,8 +81,8 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
                 stack: [],
                 sleepIntervalId: undefined
             },
-            clearIntervals: function () {
-                for (let i = 0; i < pet.petNeedsObject.intervalStack.stack.length; i++) {
+            clearIntervals: () => {
+                for (let i = 0; i < pet.petNeedsObject.intervalStack.stack.length; i+=1) {
                     clearInterval(pet.petNeedsObject.intervalStack.stack[i]);
                 }
                 pet.petNeedsObject.intervalStack.stack.length = 0;
@@ -132,38 +92,37 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
     }
     
     let petActions = {
-        getAttr: function(attr){
-            return pet[attr];
-        },
-        feed: function () {
+        getAttr: (attr) => pet[attr]
+        ,
+        feed: () => {
             pet.food += 2;
         },
-        drink: function () {
+        drink: () => {
             pet.water += 2;
         },
-        goToSleep: function () {
+        goToSleep: () => {
             pet.isSleeping = true;
             pet.petNeedsObject.clearIntervals();
         },
-        wakeUp: function () {
+        wakeUp: () => {
             pet.isSleeping = false;
             pet.petNeedsObject.foodNeed();
             pet.petNeedsObject.waterNeed();
             pet.petNeedsObject.funNeed();
             pet.petNeedsObject.levelUp();
         },
-        play: function () {
+        play: () => {
             pet.fun += 2;
         },
-        savePet: function () {
+        savePet: () => {
             let statsToLocalStorage = {
-                name: name,
+                name,
                 isAlive: true,
                 isSleeping: false,
-                food: food,
-                water: water,
-                fun: fun,
-                fatigue: fatigue,
+                food,
+                water,
+                fun,
+                fatigue,
                 level: 1,
             }
             localStorage.setItem(name, JSON.stringify(statsToLocalStorage));
@@ -179,3 +138,45 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
 
     return petActions;
 }
+
+let PetModel = (function petModel() {
+    let myPets = [];
+    let myObservers = [];
+
+    function notifySubscribers() {
+        myObservers.forEach( (observer) => {
+            if (typeof observer.notify === "function") {
+                // console.log(myPets);
+                observer.notify(myPets);
+            }
+        })
+    }
+
+    return {
+        addPet: (petName) => { 
+            let pet = createPet(petName, notifySubscribers);
+            myPets.push(pet);
+           
+            pet.name = petName;
+            pet.isAlive = pet.getAttr('isAlive');
+            pet.isSleeping = pet.getAttr('isSleeping');
+            pet.food = pet.getAttr('food');
+            pet.water = pet.getAttr('water');
+            pet.fun = pet.getAttr('fun');
+            pet.fatigue = pet.getAttr('fatigue');
+            pet.level = pet.getAttr('level');
+            localStorage.setItem(`${petName}`, JSON.stringify(pet));
+            JSON.parse(localStorage.getItem(`${petName}`));
+            // console.log(localStorage);
+            
+            notifySubscribers();
+        },
+        // removePet: function(pet){
+
+        // },
+        subscribe(observer) {
+            myObservers.push(observer);
+            notifySubscribers();
+        }
+    }
+})();
