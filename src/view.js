@@ -62,28 +62,28 @@ function createPETDIV(myModel, petName) {
 
       let feedBtn = document.getElementById(pet.getAttr('name') + '-feed');
       feedBtn.addEventListener('click', () => {
-        petActions.feed();
+        pet.feed();
         document.getElementById(pet.getAttr('name') + '-food').value += 5;
       });
       let waterBtn = document.getElementById(
         pet.getAttr('name') + '-give-water'
       );
       waterBtn.addEventListener('click', () => {
-        petActions.drink();
+        pet.drink();
         document.getElementById(pet.getAttr('name') + '-water').value += 5;
       });
       let playBtn = document.getElementById(pet.getAttr('name') + '-play');
       playBtn.addEventListener('click', () => {
-        petActions.play();
+        pet.play();
         document.getElementById(pet.getAttr('name') + '-fun').value += 5;
       });
       let sleepBtn = document.getElementById(pet.getAttr('name') + '-sleep');
       sleepBtn.addEventListener('click', () => {
-        petActions.goToSleep();
+        pet.goToSleep();
       });
       let wakeBtn = document.getElementById(pet.getAttr('name') + '-wake');
       wakeBtn.addEventListener('click', () => {
-        petActions.wakeUp();
+        pet.wakeUp();
       });
     });
   };

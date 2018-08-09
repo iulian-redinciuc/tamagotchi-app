@@ -131,7 +131,7 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
         }
     }
     
-    petActions = {
+    let petActions = {
         getAttr: function(attr){
             return pet[attr];
         },
