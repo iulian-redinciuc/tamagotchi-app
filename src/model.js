@@ -1,8 +1,9 @@
 
 
-function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue = 0) {
+function createPet(quoteData, petImg, onUpdateCb, food = 100, water = 100, fun = 100, fatigue = 0) {
     let pet = {
-        name,
+        quoteData,
+        petImg,
         isAlive: true,
         isSleeping: false,
         food,
@@ -116,7 +117,7 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
         },
         savePet: () => {
             let statsToLocalStorage = {
-                name,
+                name: quoteData.author,
                 isAlive: true,
                 isSleeping: false,
                 food,
@@ -125,7 +126,7 @@ function createPet(name, onUpdateCb, food = 100, water = 100, fun = 100, fatigue
                 fatigue,
                 level: 1,
             }
-            localStorage.setItem(name, JSON.stringify(statsToLocalStorage));
+            localStorage.setItem(quoteData.author, JSON.stringify(statsToLocalStorage));
         }
 
     };
@@ -153,11 +154,12 @@ let PetModel = (function petModel() {
     }
 
     return {
-        addPet: (petName) => { 
-            let pet = createPet(petName, notifySubscribers);
+        addPet: (petName, petImg) => { 
+            let pet = createPet(petName, petImg, notifySubscribers);
             myPets.push(pet);
            
             pet.name = petName;
+            pet.petImg = petImg
             pet.isAlive = pet.getAttr('isAlive');
             pet.isSleeping = pet.getAttr('isSleeping');
             pet.food = pet.getAttr('food');

@@ -1,10 +1,11 @@
 let submitBtn = document.getElementById('sbm-form');
-submitBtn.addEventListener('click', (e) => {
+submitBtn.addEventListener('click', e => {
   e.preventDefault();
-  let petNameInput = document.getElementById('pet-name');
-  let petName = petNameInput.value;
 
-  createPETDIV(PetModel);
-  PetModel.addPet(petName);
-  petNameInput.value = '';
+  DataService.getPic(resPic => {
+    DataService.getQuote(resQuote => {
+      createPETDIV(PetModel);
+      PetModel.addPet(resQuote, resPic.message);
+    }, (err)=> Error(err));
+  }, (err) => Error(err));
 });

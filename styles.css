@@ -116,3 +116,13 @@ progress {
 .call-to-actions button:first-child {
     background-image: url()
 }
+
+.cat {
+    text-align: center;
+    font-weight: bold;
+}
+
+.quote {
+    margin-bottom: 20px;
+    text-align: justify;
+}
