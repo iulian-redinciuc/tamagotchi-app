@@ -1,4 +1,22 @@
 
+let bgImage;
+
+function decision(successCb, errorCb) {
+    
+    DataService.getAnswer((res) => {
+
+        bgImage = res.image;
+        if(res.answer === "yes") {
+            successCb();
+        }
+        else {
+            errorCb();
+        }
+    }, (err) => Error(err));
+}
+    
+
+
 
 function createPet(quoteData, petImg, onUpdateCb, food = 100, water = 100, fun = 100, fatigue = 0) {
     let pet = {
@@ -15,7 +33,6 @@ function createPet(quoteData, petImg, onUpdateCb, food = 100, water = 100, fun =
             pet.isAlive = false;
             pet.petNeedsObject.clearIntervals();
             clearInterval(pet.petNeedsObject.intervalStack.sleepIntervalId);
-            // console.log(`${pet.name}  is dead :(`)
         },
         petNeedsObject: {
             checkStatus:  (petNeed) => {
@@ -93,12 +110,12 @@ function createPet(quoteData, petImg, onUpdateCb, food = 100, water = 100, fun =
     }
     
     let petActions = {
-        getAttr: (attr) => pet[attr]
-        ,
+        getAttr: (attr) => pet[attr],
         feed: () => {
             pet.food += 2;
         },
         drink: () => {
+            decision();
             pet.water += 2;
         },
         goToSleep: () => {
