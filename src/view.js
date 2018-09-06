@@ -72,16 +72,16 @@ function createPETDIV(myModel) {
       let feedBtn = document.getElementById(`${petName}-feed`);
 
       feedBtn.addEventListener('click', () => {
-        decision(
-          () => {
-            pet.feed();
-            document.body.style.backgroundImage = `url(${bgImage})`;
+        decision().then(
+          succes => {
             alert('Yes please!');
+            document.body.style.backgroundImage = `url(${bgImage})`;
           },
-          () => {
+          reject => {
             alert('NO!');
             document.body.style.backgroundImage = `url(${bgImage})`;
           }
+
         );
         // pet.feed();
         document.getElementById(`${petName}-food`).value += 5;

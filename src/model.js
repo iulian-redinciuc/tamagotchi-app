@@ -2,19 +2,21 @@
 let bgImage;
 
 function decision() {
-    return new Promise((resolve, rej)=>{
-        DataService.getAnswer((res) => {
 
-            bgImage = res.image;
-            if(res.answer === "yes") {
-                resolve();
+    return new Promise((resolve, reject) => {
+        DataService.getAnswer().then(
+            resolveAnswer => {
+                if(resolveAnswer.answer === "yes") {
+                    bgImage = resolveAnswer.image
+                    resolve()
+                }
+                else {
+                    bgImage = resolveAnswer.image
+                    reject()
+                }
             }
-            else {
-                rej();
-            }
-        }, (err) => Error(err));
-    })
-
+        )
+    })       
 }
     
 
@@ -117,7 +119,6 @@ function createPet(quoteData, petImg, onUpdateCb, food = 100, water = 100, fun =
             pet.food += 2;
         },
         drink: () => {
-            decision();
             pet.water += 2;
         },
         goToSleep: () => {
