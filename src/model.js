@@ -1,18 +1,20 @@
 
 let bgImage;
 
-function decision(successCb, errorCb) {
-    
-    DataService.getAnswer((res) => {
+function decision() {
+    return new Promise((resolve, rej)=>{
+        DataService.getAnswer((res) => {
 
-        bgImage = res.image;
-        if(res.answer === "yes") {
-            successCb();
-        }
-        else {
-            errorCb();
-        }
-    }, (err) => Error(err));
+            bgImage = res.image;
+            if(res.answer === "yes") {
+                resolve();
+            }
+            else {
+                rej();
+            }
+        }, (err) => Error(err));
+    })
+
 }
     
 

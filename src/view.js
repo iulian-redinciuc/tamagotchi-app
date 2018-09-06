@@ -10,34 +10,43 @@ function createPETDIV(myModel) {
 
       let heading = document.createElement('h1');
       heading.innerText = pet.getAttr('quoteData').author;
-  
 
       let petImg = document.createElement('div');
       petImg.classList.add('pet-img');
       petImg.style.backgroundImage = `url(${pet.getAttr('petImg')})`;
 
       let cat = document.createElement('p');
-      cat.className = "cat"
-      cat.innerText =  `thinking about ${pet.getAttr('quoteData').cat}...`;
+      cat.className = 'cat';
+      cat.innerText = `thinking about ${pet.getAttr('quoteData').cat}...`;
 
       let quote = document.createElement('i');
-      quote.className = "quote"
-      quote.innerHTML =  `<p>" ${pet.getAttr('quoteData').quote} "</p>`
+      quote.className = 'quote';
+      quote.innerHTML = `<p>" ${pet.getAttr('quoteData').quote} "</p>`;
 
       let foodStatus = document.createElement('div');
-      foodStatus.innerHTML = `<div class="status">Food </div><progress id="${petName}-food" value="${pet.getAttr('food')}" max="100"></progress><br>`;
+      foodStatus.innerHTML = `<div class="status">Food </div><progress id="${petName}-food" value="${pet.getAttr(
+        'food'
+      )}" max="100"></progress><br>`;
 
       let waterStatus = document.createElement('div');
-      waterStatus.innerHTML = `<div class="status">Water </div><progress id="${petName}-water" value="${pet.getAttr('water')}" max="100"></progress><br>`;
+      waterStatus.innerHTML = `<div class="status">Water </div><progress id="${petName}-water" value="${pet.getAttr(
+        'water'
+      )}" max="100"></progress><br>`;
 
       let funStatus = document.createElement('div');
-      funStatus.innerHTML = `<div class="status">Fun </div><progress id="${petName}-fun" value="${pet.getAttr('fun')}" max="100"></progress><br>`;
+      funStatus.innerHTML = `<div class="status">Fun </div><progress id="${petName}-fun" value="${pet.getAttr(
+        'fun'
+      )}" max="100"></progress><br>`;
 
       let fatigueStatus = document.createElement('div');
-      fatigueStatus.innerHTML = `<div class="status">Fatigue </div><progress id="${petName}-fatigue" value="${pet.getAttr('fatigue')}" max="100"></progress><br>`;
+      fatigueStatus.innerHTML = `<div class="status">Fatigue </div><progress id="${petName}-fatigue" value="${pet.getAttr(
+        'fatigue'
+      )}" max="100"></progress><br>`;
 
       let levelStatus = document.createElement('div');
-      levelStatus.innerHTML = `<div class="status">Level </div><progress id="${petName}-level" value="${pet.getAttr('level')}" max="100"></progress>`;
+      levelStatus.innerHTML = `<div class="status">Level </div><progress id="${petName}-level" value="${pet.getAttr(
+        'level'
+      )}" max="100"></progress>`;
 
       let actions = document.createElement('div');
       actions.classList.add('call-to-actions');
@@ -63,16 +72,18 @@ function createPETDIV(myModel) {
       let feedBtn = document.getElementById(`${petName}-feed`);
 
       feedBtn.addEventListener('click', () => {
-        // decision(() => {
-        //   pet.feed();
-        //   document.body.style.backgroundImage = `url(${bgImage})`;
-        //   alert("Yes please!");
-          
-        // }, () => {
-        //   alert("NO!");
-        //   document.body.style.backgroundImage = `url(${bgImage})`;
-        // })
-        pet.feed();
+        decision(
+          () => {
+            pet.feed();
+            document.body.style.backgroundImage = `url(${bgImage})`;
+            alert('Yes please!');
+          },
+          () => {
+            alert('NO!');
+            document.body.style.backgroundImage = `url(${bgImage})`;
+          }
+        );
+        // pet.feed();
         document.getElementById(`${petName}-food`).value += 5;
       });
 
@@ -101,7 +112,6 @@ function createPETDIV(myModel) {
       wakeBtn.addEventListener('click', () => {
         pet.wakeUp();
       });
-
     });
   };
   myModel.subscribe(pets);

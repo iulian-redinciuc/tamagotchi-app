@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Tamagotchi Game",
   "scripts": {
-    "dev": "babel src --out-dir dist --watch",
+    "dev": "babel src --out-dir dist | live-server",
     "prod": "babel src --out-dir dist",
     "uglify": "uglify-js src -o dist"
   },
