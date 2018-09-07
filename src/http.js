@@ -2,8 +2,8 @@ class HTTP {
   static request(
     method,
     url,
-    successCb,
-    errorCb,
+    // successCb,
+    // errorCb,
     // headers = { 'content-type': 'application/json' },
     payload = undefined
   ) {
